@@ -40,5 +40,19 @@ services:
     dns:
       - 8.8.8.8
       - 8.8.4.4
+
+  website:
+    build: 
+      context: ./ailens-fashion
+      dockerfile: Dockerfile.nextjs
+    container_name: ailens_website
+    restart: always
+    volumes:
+      - ./website:/ailensfashion/ailens-fashion
+    ports:
+      - "3000:3000"
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
 volumes:
   data:
