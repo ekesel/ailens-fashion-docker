@@ -1,0 +1,44 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    container_name: ailens_db
+    restart: always
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ailens@123
+      MYSQL_DATABASE: ailens
+      MYSQL_USER: ailens
+      MYSQL_PASSWORD: ailens@123
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-pailens@123", "-e", "SELECT 1"]
+      timeout: 20s
+      retries: 10
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+  
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: ailens_backend
+    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:7000"
+    restart: always
+    volumes:
+      - .:/ailensfashion
+    ports:
+      - "7000:7000"
+    env_file:
+      - ailensfashion/.env
+    depends_on:
+      db:
+        condition: service_healthy
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+volumes:
+  data:
