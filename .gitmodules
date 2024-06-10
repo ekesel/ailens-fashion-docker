@@ -1,0 +1,3 @@
+[submodule "ailens-fashion"]
+	path = ailens-fashion
+	url = https://github.com/ekesel/ailens-fashion.git
