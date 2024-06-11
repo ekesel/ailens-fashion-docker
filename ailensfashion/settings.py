@@ -147,6 +147,7 @@ REST_FRAMEWORK = {
         'api.throttles.MonthlyRateThrottle',
         'api.throttles.OneTimeRateThrottle',
         'api.throttles.BulkRateThrottle',
+        'api.throttles.NoThrottle'
     ],
 }
 

@@ -48,6 +48,7 @@ class OneTimeRateThrottle(BaseThrottle):
             return False
 
         cache_key = self.get_cache_key(request, view)
+        print(cache_key)
         if cache.get(cache_key):
             return False
 
@@ -88,3 +89,8 @@ class BulkRateThrottle(BaseThrottle):
             return 2000
         # Add more conditions as needed
         return 500
+    
+class NoThrottle(BaseThrottle):
+
+    def allow_request(self, request, view):
+        return True
