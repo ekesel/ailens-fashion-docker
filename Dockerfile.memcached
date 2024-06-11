@@ -1,0 +1,9 @@
+# Dockerfile.memcached
+FROM memcached:alpine
+
+USER root
+RUN apk --no-cache add netcat-openbsd
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD nc -z 127.0.0.1 11211 || exit 1
+
+USER memcache
