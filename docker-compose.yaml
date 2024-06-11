@@ -12,7 +12,7 @@ services:
       MYSQL_USER: ailens
       MYSQL_PASSWORD: ailens@123
     ports:
-      - "3306:3306"
+      - "3307:3306"
     healthcheck:
       test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-pailens@123", "-e", "SELECT 1"]
       timeout: 20s

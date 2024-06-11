@@ -16,4 +16,4 @@ RUN pip install -r requirements.txt
 # Copy the project code into the container
 COPY . /ailensfashion/
 
-CMD ["/wait-for-db.sh", "db:3306"]
+CMD ["/wait-for-db.sh", "db:3307"]
