@@ -1,4 +1,4 @@
-# Project Title
+# Ai-Lens Arch
 
 Local Setup Guide for Django Project with MySQL
 
@@ -86,9 +86,17 @@ MYSQL_PASSWORD=
 
 Ensure you replace the placeholders with the actual MySQL credentials.
 
+
+### step 6 Submodule update
+
+```
+git submodule init
+git submodule update
+```
+
 ## Running the Project
 
-### Step 6: Build and Run the Project
+### Step 7: Build and Run the Project
 
 Use Docker to build and run the project.
 
