@@ -26,12 +26,12 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: ailens_backend
-    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:6000"
+    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:6001"
     restart: always
     volumes:
       - .:/ailensfashion
     ports:
-      - "6000:6000"
+      - "6001:6001"
     env_file:
       - ailensfashion/.env
     depends_on:

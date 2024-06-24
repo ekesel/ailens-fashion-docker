@@ -28,9 +28,12 @@ class Billing(models.Model):
     method = models.CharField(max_length=100, choices=AVAILABLE_METHODS)
     start_dt = models.DateTimeField(null=True, blank=True)
     end_dt = models.DateTimeField(null=True, blank=True)
-    req_allowed = models.IntegerField(null=True, blank=True)
+    no_of_req_allowed = models.IntegerField(null=True, blank=True)
     price = models.CharField(max_length=1000, null=True, blank=True)
     is_active = models.BooleanField(default=True)
+    price_for_exceeded_requests = models.IntegerField(null=True, blank=True)
+    no_of_exceeded_requests_allowed = models.IntegerField(null=True, blank=True)
+    no_of_request_consumed = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.client.name

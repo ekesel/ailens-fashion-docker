@@ -157,3 +157,12 @@ CACHES = {
         'LOCATION': 'memcached:11211',
     }
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'api.throttles.OneTimeRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'one_time': '1/hour',
+    },
+}  
