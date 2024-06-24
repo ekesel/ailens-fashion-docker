@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view, throttle_classes, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from api.throttles import MonthlyRateThrottle, OneTimeRateThrottle, BulkRateThrottle, NoThrottle
+from api.throttles import  OneTimeRateThrottle, NoThrottle
 from rest_framework.authtoken.models import Token
 from .utils import check_token, call_vton_service
 from .serializers import vtonSerializer
