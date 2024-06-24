@@ -144,11 +144,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_THROTTLE_CLASSES': [
-        'api.throttles.MonthlyRateThrottle',
-        'api.throttles.OneTimeRateThrottle',
-        'api.throttles.BulkRateThrottle',
-        'api.throttles.NoThrottle'
+       'api.throttles.OneTimeRateThrottle'
     ],
+    
 }
 
 CACHES = {
@@ -157,12 +155,3 @@ CACHES = {
         'LOCATION': 'memcached:11211',
     }
 }
-
-REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'api.throttles.OneTimeRateThrottle',
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'one_time': '1/hour',
-    },
-}  
