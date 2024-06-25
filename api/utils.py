@@ -4,7 +4,7 @@ def check_token(auth_header):
     if auth_header and auth_header.startswith('Token '):
         auth_token = auth_header.split(' ')[1]
         if Token.objects.filter(key=auth_token).exists():
-            return True
+            return True, Token.objects.filter(key=auth_token).last().user
 
     return False
 

@@ -21,4 +21,5 @@ from api.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vton/', vton, name='vton'),
+    path('outfits/', outfits, name='outfits')
 ]

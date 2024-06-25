@@ -43,6 +43,7 @@ static/
 
 # Environment variables
 .env
+outfit/*
 
 # Virtual environments
 venv/
