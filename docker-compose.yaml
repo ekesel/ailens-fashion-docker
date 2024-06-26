@@ -26,7 +26,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: ailens_backend
-    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:6001"
+    command: sh -c "python3 manage.py migrate --noinput && python manage.py runserver 0.0.0.0:6001"
     restart: always
     volumes:
       - .:/ailensfashion
@@ -65,5 +65,29 @@ services:
     restart: always
     ports:
       - "11211:11211"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6380:6379
+      
+  celery:
+    build: .
+    user: django-user
+    command: ["celery", "-A", "ailensfashion", "worker", "--loglevel=info"]
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  celerybeat:
+    build: .
+    user: django-user
+    command: ["celery", "-A", "ailensfashion", "beat", "--loglevel=info", "--scheduler", "django_celery_beat.schedulers:DatabaseScheduler"]
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+  
 volumes:
   data:
