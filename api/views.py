@@ -92,7 +92,7 @@ def register(request):
             return Response({'error': 'Please provide valid Email or Phone'}, status=400)
 
         user = User.objects.create_user(username=username, password=password, email=email)
-        customer = Client.objects.create(user=user,phone=phone)
+        customer = Client.objects.create(user=user,phone=phone, name=username)
         if user and customer:
             token, created = Token.objects.get_or_create(user=user)
             return Response({'token': token.key}, status=201)
